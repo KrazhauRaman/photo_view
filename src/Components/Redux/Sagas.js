@@ -15,7 +15,7 @@ function* fetchPhotoUrls() {
         const arrayOfUserAvatars = yield select(state => [...state.arrayOfUserAvatars]);
 
         for (let userAvatar of arrayOfUserAvatars) {
-            if (userAvatar.url === "") {
+            if (!userAvatar.url) {
                 userAvatar.url = (yield call(getPhotoesUrls, userAvatar.id)).url;
             }
         };
